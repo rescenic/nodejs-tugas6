@@ -1,15 +1,15 @@
 {
   "name": "nodejs-tugas6-ecommerce-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Muhammad Ridwan Hakim",
   "license": "ISC",
-  "description": "",
+  "description": "Tugas 6 Sanbercode Node.JS Backend - E-Commerce API",
   "devDependencies": {
     "express": "^4.19.2",
     "nodemon": "^3.1.3"
