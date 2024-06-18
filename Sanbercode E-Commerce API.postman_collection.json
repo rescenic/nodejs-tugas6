@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "d6f075a3-9bb7-4954-9156-4af792833eb4",
+		"name": "Sanbercode E-Commerce API",
+		"description": "# 🚀 E-Commerce API\n\n**Tugas 6 Sanbercode Node.JS Backend oleh Muhammad Ridwan Hakim**\n\n## 🔖 API Documentation\n\n#### 1\\. GET /api/categories\n\n- **Description**: Get all categories.\n    \n- **Response**: Array of category objects.\n    \n\n``` json\n[  { \"id\": 1, \"name\": \"Elektronik\" },  { \"id\": 2, \"name\": \"Perabotan\" }]\n\n ```\n\n#### 2\\. GET /api/categories/:id\n\n- **Description**: Get a category by ID.\n    \n- **Parameters**:\n    \n    - `id`: ID of the category.\n        \n- **Response**: Category object or 404 if not found.\n    \n\n``` json\n{ \"id\": 1, \"name\": \"Elektronik\" }\n\n ```\n\n#### 3\\. POST /api/categories\n\n- **Description**: Add a new category.\n    \n\n``` json\n{ \"name\": \"Pakaian\" }\n\n ```\n\n- **Response**: The newly created category object.\n    \n\n``` json\n{ \"id\": 3, \"name\": \"Pakaian\" }\n\n ```\n\n- **Description**: Add several categories at once.\n    \n\n``` json\n[\n  { \"name\": \"Pakaian\" },\n  { \"name\": \"Makanan\" },\n  { \"name\": \"Olahraga\" }\n]\n\n ```\n\n- **Response**: The newly created array of category objects.\n    \n\n``` json\n[\n    {\n        \"id\": 3,\n        \"name\": \"Pakaian\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Makanan\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Olahraga\"\n    }\n]\n\n ```\n\n#### 4\\. PUT /api/categories/:id\n\n- **Description**: Update a category by ID.\n    \n- **Parameters**:\n    \n    - `id`: ID of the category.\n        \n\n``` json\n{ \"name\": \"Pakaian dan Aksesoris\" }\n\n ```\n\n- **Response**: The updated category object or 404 if not found (\"Kategori tidak ditemukan.\").\n    \n\n``` json\n{ \"id\": 3, \"name\": \"Pakaian dan Aksesoris\" }\n\n ```\n\n#### 5\\. DELETE /api/categories/:id\n\n- **Description**: Delete a category by ID.\n    \n- **Parameters**:\n    \n    - `id`: ID of the category.\n        \n- **Response**: 204 No Content.\n    \n\n#### 6\\. GET /api/products\n\n- **Description**: Get all products or search products by name.\n    \n- **Query Parameters**:\n    \n    - `name` (optional): Name to search products.\n        \n- **Response**: Array of product objects.\n    \n\n``` json\n[ { \"id\": 1, \"name\": \"Laptop\", \"category\": \"Elektronik\" }, { \"id\": 2, \"name\": \"Meja\", \"category\": \"Perabotan\" }]\n\n ```\n\n#### 7\\. GET /api/products/category/:categoryName?name=:name\n\n- **Description**: Get products by category and optional search by name.\n    \n- **Parameters**:\n    \n    - `categoryName`: Name of the category.\n        \n- **Query Parameters**:\n    \n    - `name` (optional): Name to search products.\n        \n- **Response**: Array of product objects.\n    \n\n``` json\n[ { \"id\": 1, \"name\": \"Laptop\", \"category\": \"Elektronik\" }\n\n ```",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11724952",
+		"_collection_link": "https://rescenic.postman.co/workspace/921be1be-1dac-49e7-86bc-07abfad55b66/collection/11724952-d6f075a3-9bb7-4954-9156-4af792833eb4?action=share&source=collection_link&creator=11724952"
+	},
+	"item": [
+		{
+			"name": "All Categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/categories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Category By ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/categories/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"categories",
+						"2"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "New Category / Categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  { \"name\": \"Pakaian\" },\n  { \"name\": \"Makanan\" },\n  { \"name\": \"Olahraga\" }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}} /api/categories",
+					"host": [
+						"{{base_url}} "
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Category by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Pakaian dan Aksesoris\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/categories/3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"categories",
+						"3"
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Category By ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/categories/4",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"categories",
+						"4"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "All Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Product Name Based On Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/products/category/Perabotan",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"category",
+						"Perabotan"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Product Name Based On Category With Query String (Optional)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/products/category/Perabotan?name=Meja",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"category",
+						"Perabotan"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Meja"
+						}
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		}
+	]
+}
