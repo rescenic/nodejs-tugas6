@@ -1,3 +1,5 @@
+// data/products/js
+
 let products = [
   { id: 1, name: "Laptop", category: "Elektronik" },
   { id: 2, name: "Meja", category: "Perabotan" },

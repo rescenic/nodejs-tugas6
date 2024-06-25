@@ -1,3 +1,5 @@
+// routes/category.js
+
 const express = require("express");
 const router = express.Router();
 let categories = require("../data/categories");
